@@ -1,5 +1,4 @@
 ﻿using System;
-using DesignPatterns.Behavioral.Command;
 
 namespace ConsoleApp
 {
@@ -15,7 +14,7 @@ namespace ConsoleApp
             {
                 switch (input)
                 {
-                    case "1": Behaviour_Command(); break;
+                    case "1": DesignPatterns.Behavioral.Command.Client.Run(); break;
                     default: return;
                 }
                 Console.WriteLine();
@@ -26,16 +25,6 @@ namespace ConsoleApp
 
                 input = Console.ReadLine();
             }
-        }
-
-        static void Behaviour_Command()
-        {
-            Invoker invoker = new Invoker();
-            invoker.OnStart = new SimpleCommand("Some simple command");
-            Receiver receiver = new Receiver();
-            invoker.OnFinish = new ComplexCommand(receiver, "Command A", "Command B");
-
-            invoker.DoSomethingImportant();
         }
 
         static void ShowMenu()
